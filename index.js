@@ -9,15 +9,16 @@ const
   app = express().use(bodyParser.json()); // creates express http server
 
 // Sets server port and logs message on success
-app.listen(process.env.PORT || 3979, () => console.log('webhook is listening'));
+app.listen(process.env.PORT || 3979, () => console.log('webhook is listening at ' + process.env.PORT));
 
 //******2nd part********** */
 
 // Creates the endpoint for our webhook 
 app.post('/webhook', (req, res) => {  
+debugger;
  
   let body = req.body;
-console.log("\nThis is the body response from webhook route: " + body.toString() + "\n");
+  console.log("\nThis is the body response from webhook route: " + body.toString() + "\n");
   // Checks this is an event from a page subscription
   if (body.object === 'page') {
 
